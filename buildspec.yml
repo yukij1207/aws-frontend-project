@@ -1,0 +1,16 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo "正在准备环境..."
+  build:
+    commands:
+      - echo "编译中... (如果是静态网页，这一步可以只是打个招呼)"
+  post_build:
+    commands:
+      - echo "编译完成！"
+
+artifacts:
+  files:
+    - '**/*' # 代表把当前目录下所有文件都打包发给 S3
