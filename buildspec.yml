@@ -2,15 +2,27 @@ version: 0.2
 
 phases:
   install:
+    runtime-versions:
+      nodejs: 16
     commands:
-      - echo "正在准备环境..."
+      - echo Installing dependencies...
+      - npm install
+
+  pre_build:
+    commands:
+      - echo Nothing to do...
+      - ls -l
   build:
     commands:
-      - echo "编译中... (如果是静态网页，这一步可以只是打个招呼)"
+      - echo Build started on `date`
+      - npm run build
+      - ls -l
   post_build:
     commands:
-      - echo "编译完成！"
+      - echo Build completed on `date`
 
 artifacts:
   files:
-    - '**/*' # 代表把当前目录下所有文件都打包发给 S3
+    - dist/shop/*
+    - dist/shop/assets/*
+    - appspec.yml
